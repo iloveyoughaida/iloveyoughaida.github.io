@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>احبك غيداء ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#35124d 0%,#170d2d 38%,#080b1c 100%);
+    color:white;
+    overflow-x:hidden;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 8px white;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.25;transform:scale(.7)}
+    to{opacity:1;transform:scale(1.5)}
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    min-height:100vh;
+    padding:35px 20px 60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+h1{
+    font-size:38px;
+    margin:0 0 30px;
+    color:#fff;
+    text-shadow:
+        0 0 10px #ff4f91,
+        0 0 25px #8b5cff;
+}
+
+.card{
+    width:100%;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:28px;
+    padding:28px 20px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 50px rgba(0,0,0,.4);
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    background:rgba(255,255,255,.95);
+    color:#32133d;
+    font-size:20px;
+    text-align:center;
+}
+
+.heartBtn{
+    margin-top:18px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#8b2f72,#c72f65,#8d315f);
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(199,47,101,.35);
+}
+
+.heartBtn:active{
+    transform:scale(.97);
+}
+
+.error{
+    display:none;
+    color:#ff9fbc;
+    margin-top:14px;
+    font-size:16px;
+}
+
+#apology{
+    display:none;
+    animation:appear 1s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* الصورة الأولى */
+.sticker{
+    display:block;
+    width:min(280px,85%);
+    margin:0 auto 22px;
+    border-radius:25px;
+    filter:drop-shadow(0 10px 20px rgba(0,0,0,.45));
+}
+
+.message{
+    font-size:19px;
+    line-height:2.05;
+    color:#fff;
+    text-align:right;
+    white-space:pre-line;
+}
+
+/* زر المسامحة */
+.forgiveBtn{
+    margin-top:25px;
+    padding:16px 30px;
+    border:0;
+    border-radius:20px;
+    background:linear-gradient(135deg,#9b3d91,#d04473);
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(208,68,115,.4);
+}
+
+/* الصورة الثانية */
+#forgiven{
+    display:none;
+    margin-top:30px;
+    animation:forgivenAppear 1.2s ease;
+}
+
+#forgiven img{
+    display:block;
+    width:min(360px,95%);
+    margin:auto;
+    border-radius:25px;
+    filter:drop-shadow(0 15px 30px rgba(255,80,150,.3));
+}
+
+@keyframes forgivenAppear{
+    0%{
+        opacity:0;
+        transform:scale(.6);
+    }
+    60%{
+        transform:scale(1.08);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.song{
+    display:none;
+    margin-top:22px;
+    font-size:14px;
+    color:#e8c8ff;
+}
+
+.smallHeart{
+    position:fixed;
+    pointer-events:none;
+    z-index:5;
+    animation:floatHeart 2s linear forwards;
+}
+
+@keyframes floatHeart{
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(.7);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-150px) scale(1.5);
+    }
+}
+
+@media(max-width:500px){
+    h1{
+        font-size:32px;
+    }
+
+    .message{
+        font-size:17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+    <h1>احبك غيداء ❤️</h1>
+
+    <!-- البداية -->
+    <div class="card" id="startCard">
+
+        <input
+            id="loveInput"
+            type="text"
+            placeholder=""
+            autocomplete="off"
+        >
+
+        <button class="heartBtn" onclick="openMessage()">
+            ❤️
+        </button>
+
+        <div class="error" id="error">
+            اكتبي احبك ❤️
+        </div>
+
+    </div>
+
+    <!-- رسالة الاعتذار -->
+    <div class="card" id="apology">
+
+        <img
+            class="sticker"
+            src="sticker1.jpg"
+            alt="❤️"
+        >
+
+        <div class="message">انا اكثر الناس شوق للكلام معك وانا اكلمك احسن مشتاقلك يوم نمت بالغلط قبل لا اغفى كنت افكر فيك وهذا سبب نومي الراحة الي احسها لما تجين فبالي تنسيني نفسي والي صار اليوم لما ماصحيت والله المنبه مادق بس حلمت فيك وشفت وجهك وسمعت صوتك يعني ماتفارقين بالي حتى فالمنام انا احبك اكثر مما تتصورين وعتابك يحرق قلبي وماتحمله اتمنى تسامحيني...احبك من اعماق قلبي❤️</div>
+
+        <button class="forgiveBtn" onclick="forgive()">
+            مسامحتك ❤️
+        </button>
+
+        <!-- الصورة الثانية -->
+        <div id="forgiven">
+
+            <img
+                src="sticker2.jpg"
+                alt="❤️"
+            >
+
+            <div style="margin-top:18px;font-size:22px;color:#ffc7e2;">
+                احبك غيداء ❤️
+            </div>
+
+        </div>
+
+        <div class="song" id="songName">
+            🎵 محلا اللقى
+        </div>
+
+    </div>
+
+</div>
+
+<audio id="song" preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* النجوم بالخلفية */
+const stars = document.getElementById("stars");
+
+for(let i=0;i<90;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDelay=(Math.random()*3)+"s";
+
+    star.style.opacity=Math.random();
+
+    stars.appendChild(star);
+}
+
+
+/* فتح الرسالة */
+function openMessage(){
+
+    const input=document.getElementById("loveInput");
+    const value=input.value.trim();
+
+    if(value === "احبك"){
+
+        document.getElementById("startCard").style.display="none";
+
+        document.getElementById("apology").style.display="block";
+
+        const song=document.getElementById("song");
+
+        song.play().catch(()=>{});
+
+        document.getElementById("songName").style.display="block";
+
+        createHearts();
+
+    }else{
+
+        document.getElementById("error").style.display="block";
+
+    }
+}
+
+
+/* زر مسامحتك */
+function forgive(){
+
+    document.getElementById("forgiven").style.display="block";
+
+    createHearts();
+
+}
+
+
+/* القلوب */
+function createHearts(){
+
+    for(let i=0;i<18;i++){
+
+        setTimeout(()=>{
+
+            const heart=document.createElement("div");
+
+            heart.className="smallHeart";
+            heart.innerHTML="❤️";
+
+            heart.style.left=Math.random()*100+"vw";
+            heart.style.bottom="20px";
+            heart.style.fontSize=(15+Math.random()*25)+"px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },2000);
+
+        },i*100);
+    }
+}
+
+
+/* زر Enter */
+document.getElementById("loveInput").addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
+        openMessage();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
