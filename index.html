@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إلى غيداء ✨</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:#020318;
+ color:white;
+ font-family:Arial,sans-serif;
+ overflow-x:hidden;
+}
+
+.sky{
+ min-height:100vh;
+ position:relative;
+ overflow:hidden;
+ background:
+ radial-gradient(circle at 20% 80%,#182b8c,transparent 35%),
+ radial-gradient(circle at 85% 75%,#7b124f,transparent 35%),
+ linear-gradient(150deg,#010216,#08084a,#30051f);
+}
+
+.stars{
+ position:absolute;
+ inset:0;
+ background-image:
+ radial-gradient(#fff 1px,transparent 1px),
+ radial-gradient(#b8c8ff 1px,transparent 1px);
+ background-size:65px 65px,105px 105px;
+ animation:stars 12s linear infinite;
+ opacity:.8;
+}
+
+@keyframes stars{
+ to{transform:translateY(70px)}
+}
+
+.star{
+ position:absolute;
+ color:white;
+ font-size:25px;
+ text-shadow:0 0 10px white,0 0 25px #8da8ff;
+ animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+ 0%,100%{opacity:.15;transform:scale(.6)}
+ 50%{opacity:1;transform:scale(1.5)}
+}
+
+.container{
+ position:relative;
+ z-index:2;
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ text-align:center;
+ padding:80px 20px;
+}
+
+.subtitle{
+ color:#ff91d2;
+ font-size:18px;
+ text-shadow:0 0 20px #ff39a8;
+}
+
+h1{
+ font-size:75px;
+ margin:15px 0;
+ background:linear-gradient(90deg,#8caaff,#ff8bd9,#ff4265);
+ -webkit-background-clip:text;
+ color:transparent;
+ text-shadow:0 0 35px #a449ff;
+}
+
+.heart{
+ font-size:35px;
+ color:#ff477d;
+ animation:pulse 1.5s infinite;
+ text-shadow:0 0 25px #ff477d;
+}
+
+@keyframes pulse{
+ 50%{transform:scale(1.3)}
+}
+
+.typing{
+ max-width:650px;
+ min-height:90px;
+ font-size:21px;
+ line-height:2;
+ margin:25px auto;
+}
+
+.button{
+ border:1px solid #ff7ac9;
+ background:linear-gradient(90deg,#302080,#8a164c);
+ color:white;
+ padding:15px 35px;
+ border-radius:40px;
+ font-size:18px;
+ box-shadow:0 0 30px #b52b9c;
+ cursor:pointer;
+}
+
+.card{
+ display:none;
+ max-width:700px;
+ margin-top:50px;
+ padding:30px 20px;
+ border:1px solid #914cff;
+ border-radius:25px;
+ background:rgba(8,5,40,.72);
+ box-shadow:0 0 40px #713cff55;
+ backdrop-filter:blur(10px);
+ animation:appear 1s ease;
+}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(30px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+.card h2{
+ color:#ff83cb;
+ text-shadow:0 0 15px #ff3fa9;
+}
+
+.card p{
+ font-size:19px;
+ line-height:2;
+ color:#eee;
+}
+
+.love{
+ margin-top:70px;
+ color:#ff83ce;
+ font-size:20px;
+}
+
+.floating{
+ position:fixed;
+ pointer-events:none;
+ animation:float 3s linear forwards;
+ z-index:10;
+}
+
+@keyframes float{
+ from{
+  transform:translateY(0) scale(1);
+  opacity:1;
+ }
+ to{
+  transform:translateY(-180px) scale(1.5);
+  opacity:0;
+ }
+}
+
+@media(max-width:600px){
+ h1{font-size:55px}
+ .typing{font-size:18px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky">
+
+<div class="stars"></div>
+
+<span class="star" style="top:10%;left:12%">✦</span>
+<span class="star" style="top:18%;left:80%;animation-delay:.5s">✦</span>
+<span class="star" style="top:35%;left:7%;animation-delay:1s">✦</span>
+<span class="star" style="top:45%;left:90%;animation-delay:1.5s">✦</span>
+<span class="star" style="top:70%;left:18%;animation-delay:.8s">✦</span>
+<span class="star" style="top:78%;left:82%;animation-delay:1.2s">✦</span>
+
+<div class="container">
+
+<div class="subtitle">إلى أجمل نجمة في سمائي ✨</div>
+
+<div class="heart">♡</div>
+
+<h1>غيداء</h1>
+
+<div class="heart">♥</div>
+
+<div class="typing" id="typing"></div>
+
+<button class="button" onclick="openLetter()">
+💌 افتحي رسالتي
+</button>
+
+<div class="card" id="letter">
+
+<h2>رسالة من قلبي ❤️</h2>
+
+<p>
+غيداء...
+<br><br>
+أعرف أن الاعتذار وحده لا يكفي،
+لكن أتمنى أن تعرفين أنني نادم
+على كل لحظة جعلتكِ حزينة.
+<br><br>
+أنتِ شخص غالٍ جدًا على قلبي،
+وأتمنى أن أصلح كل شيء بيننا.
+<br><br>
+سامحيني؟ 🥺❤️
+</p>
+
+<div class="heart">♥</div>
+
+</div>
+
+<div class="love">
+✦ أحبكِ أكثر من كل النجوم ✦
+</div>
+
+</div>
+</div>
+
+<script>
+
+const text=
+"هناك شخص واحد فقط أتمنى أن يرى هذه الصفحة... وأتمنى أن يعرف كم هو غالٍ على قلبي. ❤️";
+
+let i=0;
+
+function typeText(){
+ if(i<text.length){
+  document.getElementById("typing").innerHTML+=text[i];
+  i++;
+  setTimeout(typeText,45);
+ }
+}
+
+typeText();
+
+function openLetter(){
+
+ document.getElementById("letter").style.display="block";
+
+ for(let i=0;i<15;i++){
+
+  const heart=document.createElement("div");
+
+  heart.className="floating";
+  heart.innerHTML="♥";
+
+  heart.style.left=Math.random()*100+"%";
+  heart.style.bottom="20px";
+  heart.style.color="#ff477d";
+  heart.style.fontSize=(15+Math.random()*25)+"px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),3000);
+ }
+}
+
+</script>
+
+</body>
+</html>
